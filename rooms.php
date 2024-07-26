@@ -113,158 +113,29 @@ include 'php/logics.php';
     <section class="site-section">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_2.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_3.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_1.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
+          <?php
+            while ($rows = mysqli_fetch_assoc($outs)) {
+              # code...
+              $room_image = $rows['room_image'];
 
+              $room_no = $rows['room_no'];
+              $room_type = $rows['room_type'];
 
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_2.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_3.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_1.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
+              $size = $rows['size'];
+              $pp = $rows['pp'];
 
+              $desc = $rows['des'];
 
+              $room_price = $rows['room_price'];
+              $room_id = $rows['room_id'];
+
+              $dater = $rows['dater'];
+              $timer = $rows['timer'];
+          ?>
           <div class="col-md-4 mb-4">
             <div class="media d-block room mb-0">
               <figure>
-                <img src="images/img_2.jpg" alt="Generic placeholder image" class="img-fluid">
+                <img src="images/rooms/<?php echo $room_image;?>" alt="Generic placeholder image" class="img-fluid" style="height: 15rem; width: 23rem;">
                 <div class="overlap-text">
                   <span>
                     Featured Room 
@@ -275,64 +146,22 @@ include 'php/logics.php';
                 </div>
               </figure>
               <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
+                <h3 class="mt-0"><a href="booknow.php?room_id=<?php echo $room_id;?>#Reservation"><?php echo $room_type;?></a></h3>
                 <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
+                  <li><span class="ion-ios-people-outline"></span> <?php echo $pp;?> Guests</li>
+                  <li><span class="ion-ios-crop"></span> <?php echo $size;?> ft <sup>2</sup></li>
                 </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
+                <p><?php echo $desc;?></p>
+                <p><a href="booknow.php?room_id=<?php echo $room_id;?>#Reservation" class="btn btn-primary btn-sm">Book Now From $<?php echo $room_price;?></a></p>
               </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_3.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="media d-block room mb-0">
-              <figure>
-                <img src="images/img_1.jpg" alt="Generic placeholder image" class="img-fluid">
-                <div class="overlap-text">
-                  <span>
-                    Featured Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                </div>
-              </figure>
-              <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
-                <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
-                </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
-              </div>
-            </div>
-          </div>
+              <?php
+
+            }
+            ?>
+
+           
         </div>
       </div>
     </section>
@@ -340,13 +169,33 @@ include 'php/logics.php';
    
    
 
+    
     <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/img_5.jpg);">
       <div class="container">
         <div class="row justify-content-center align-items-center intro">
-          <div class="col-md-9 text-center element-animate">
+          <div  class="col-md-9 text-center element-animate">
             <h2>Relax and Enjoy your Holiday</h2>
             <p class="lead mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quidem tempore expedita facere facilis, dolores!</p>
-            <div class="btn-play-wrap"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
+            <div  class="btn-play-wrap">
+              <div class="background"></div>
+              <button  class="btn-play popup-vimeo "id="popup"><span class="ion-ios-play"></span></button>
+              <div id="videoPopup1" class="popup">
+                <div class="popup-content">
+                  <span class="close" id="close" >&times;</span>
+                  <video
+                    controls
+                    width="560"
+                    height="315"
+                    src="./videos/<?php echo $hero_vid;?>"
+                    frameborder="0"
+                    allowfullscreen
+                    id="videoClip"
+                    
+                  >
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

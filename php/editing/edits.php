@@ -499,4 +499,121 @@ if (isset($_POST['replay'])) {
     header("location: ../../dashboard/?link=5#$message_id");
 
 }
+
+
+// =============Adding new room++++++++++
+if (isset($_POST["add_room"])) {
+
+    $room_no = $_POST["room_no"];
+    $room_type = $_POST["room_type"];
+
+    $room_price = $_POST["room_price"];
+    $n_beds = $_POST["n_beds"];
+
+    $size = $_POST["size"];
+    $n_pp = $_POST["n_pp"];
+
+    $desc = $_POST["desc"];
+
+    $dater= date("d/m/Y");
+    $timer = date("h:i -s");
+
+    $room_id = rand(10000,99999);
+    $room_image = $_FILES["room_image"]["name"];
+    
+    $new_image_room = "rooms-MATY-Codes".rand(100,999).$room_image;
+    $room_image_tmp = $_FILES["room_image"]["tmp_name"];
+
+    $folder = "../../images/rooms";
+    $move = move_uploaded_file($room_image_tmp, $folder . "/" .$new_image_room);
+
+    if ($move) {
+        # code...
+        $sql = "INSERT INTO `rooms` (`id`, `room_no`, `room_type`, `room_price`, `room_image`, `room_id`,`size`,`beds`,`pp`, `dater`, `timer`,`des`) VALUES (NULL, '$room_no', '$room_type', '$room_price', '$new_image_room', '$room_id','$size','$n_beds','$n_pp', '$dater', '$timer','$desc')";
+        $res = mysqli_query($con, $sql);
+        if ($res) {
+            header("location: ../../dashboard/?link=3");
+        }else{
+            echo "data not inserted";
+    
+        }
+    }
+
+
+
+}
+if (isset($_POST['update_room'])) {
+    # code...
+    
+    $room_no = $_POST["room_no"];
+    $room_type = $_POST["room_type"];
+
+    $room_price = $_POST["room_price"];
+    $n_beds = $_POST["n_beds"];
+
+    $size = $_POST["size"];
+    $n_pp = $_POST["n_pp"];
+
+    $desc = $_POST["desc"];
+
+    $dater= date("d/m/Y");
+    $timer = date("h:i -s");
+
+    $room_id = rand(10000,99999);
+    $room_image = $_FILES["room_image"]["name"];
+
+    $real_room_id = $_POST['$real_room_id'];
+
+    if (!empty($room_image)) {
+        # code...
+
+        $new_image_room = "rooms-MATY-Codes".rand(100,999).$room_image;
+        $room_image_tmp = $_FILES["room_image"]["tmp_name"];
+    
+        $folder = "../../images/rooms";
+        $move = move_uploaded_file($room_image_tmp, $folder . "/" .$new_image_room);
+
+        if ($move) {
+            # code...
+
+            $sql = "UPDATE `rooms` SET `room_no` = '$room_id', `room_type` = '$room_type', `room_price` = '$room_price', `room_image` = '$new_image_room', `size` = '$size', `beds` = '$n_beds', `pp` = '$n_pp', `des` = '$desc' WHERE `room_id` = '$real_room_id'";
+            $res = mysqli_query($con, $sql);
+            if ($res) {
+                echo "Updated well";
+                // header("location: ../../dashboard/?link=3");
+            }else{
+                echo "data not inserted";
+        
+            }
+        }
+    }elseif (empty($room_image)) {
+        # code...
+
+            $sql = "UPDATE `rooms` SET `room_no` = '$room_id', `room_type` = '$room_type',`size` = '$size', `beds` = '$n_beds', `pp` = '$n_pp', `des` = '$desc' WHERE room_id = '$real_room_id'";
+            $res = mysqli_query($con, $sql);
+            if ($res) {
+                echo "Updated well without image";
+                // header("location: ../../dashboard/?link=3");
+            }else{
+                // echo "data not inserted";
+                die(mysqli_error($con));
+        
+            }
+    }
+
+
+}
+
+if (isset($_GET['delete_room'])) {
+    # code...
+    $room_id = $_GET['delete_room'];
+
+    $sql = "DELETE FROM `rooms` WHERE room_id = $room_id";
+    $res = mysqli_query($con, $sql);
+
+    if ($res) {
+        # code...
+        header("../../dashboard?link=3#rooms");
+    }
+}
 ?>

@@ -141,7 +141,7 @@ include 'php/logics.php';
           <div class="col-md-7">
             <div class="media d-block room mb-0">
               <figure>
-                <img src="images/img_1.jpg" alt="Generic placeholder image" class="img-fluid">
+                <img src="images/rooms/<?php echo $room_image;?>" alt="Generic placeholder image" class="img-fluid">
                 <div class="overlap-text">
                   <span>
                     Featured Room 
@@ -152,18 +152,25 @@ include 'php/logics.php';
                 </div>
               </figure>
               <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
+                <h3 class="mt-0"><a href="booknow.php?room_id=<?php echo $room_id;?>#Reservation" style="text-transform: capitalize;"><?php echo $room_type;?></a></h3>
                 <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
+                  <li><span class="ion-ios-people-outline"></span> <?php echo $pp;?> Guests</li>
+                  <li><span class="ion-ios-crop"></span> <?php echo $size;?> ft <sup>2</sup></li>
                 </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
+                <p><?php echo $desc;?></p>
+                <p><a href="booknow.php?room_id=<?php echo $room_id;?>#Reservation" class="btn btn-primary btn-sm">Book Now From $<?php echo $room_price;?></a></p>
               </div>
             </div>
           </div>
           <div class="col-md-5 room-thumbnail-absolute">
-            <a href="#" class="media d-block room bg first-room" style="background-image: url(images/img_2.jpg); ">
+            <?php
+            while ($recr = mysqli_fetch_assoc($outr)) {
+              # code...
+              $room_image = $recr['room_image'];
+              $room_price = $recr['room_price'];
+              $room_id = $recr['room_id'];
+            ?>
+            <a href="booknow.php?room_id=<?php echo $room_id;?>#Reservation" class="media d-block room bg first-room" style="background-image: url(images/rooms/<?php echo $room_image;?>); ">
               <!-- <figure> -->
                 <div class="overlap-text">
                   <span>
@@ -173,27 +180,15 @@ include 'php/logics.php';
                     <span class="ion-ios-star"></span>
                   </span>
                   <span class="pricing-from">
-                    from $22
+                    from $<?php echo $room_price;?>
                   </span>
                 </div>
               <!-- </figure> -->
             </a>
+              <?php
+            }
+              ?>
 
-            <a href="#" class="media d-block room bg second-room" style="background-image: url(images/img_4.jpg); ">
-              <!-- <figure> -->
-                <div class="overlap-text">
-                  <span>
-                    Hotel Room 
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                    <span class="ion-ios-star"></span>
-                  </span>
-                  <span class="pricing-from">
-                    from $22
-                  </span>
-                </div>
-              <!-- </figure> -->
-            </a>
             
           </div>
         </div>
@@ -218,7 +213,7 @@ include 'php/logics.php';
                     controls
                     width="560"
                     height="315"
-                    src="./videos//<?php echo $hero_vid;?>"
+                    src="./videos/<?php echo $hero_vid;?>"
                     frameborder="0"
                     allowfullscreen
                     id="videoClip"

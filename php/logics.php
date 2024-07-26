@@ -30,6 +30,31 @@ $sqlx = "SELECT * FROM `blogs` ORDER BY id DESC LIMIT 5";
 $resx = mysqli_query($con, $sqlx);
 
 
+$sqlr = "SELECT * FROM `rooms` ORDER BY id DESC LIMIT 1";
+$resr = mysqli_query($con,$sqlr);
+
+$rowr = mysqli_fetch_assoc($resr);
+$room_image = $rowr['room_image'];
+
+$room_no = $rowr['room_no'];
+$room_type = $rowr['room_type'];
+
+$size = $rowr['size'];
+$pp = $rowr['pp'];
+
+$desc = $rowr['des'];
+
+$room_price = $rowr['room_price'];
+$room_id = $rowr['room_id'];
+
+$dater = $rowr['dater'];
+$timer = $rowr['timer'];
+
+$queryr = "SELECT * FROM `rooms` ORDER BY RAND() LIMIT 2";
+$outr = mysqli_query($con, $queryr);
+
+$querys = "SELECT * FROM `rooms` ORDER BY id DESC";
+$outs = mysqli_query($con, $querys);
 
 
 

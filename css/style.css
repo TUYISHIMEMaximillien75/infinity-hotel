@@ -145,6 +145,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   /* display: none; */
   cursor: pointer;
   transform: translateY(-50%);
+  
 }
 
 .chatbox {

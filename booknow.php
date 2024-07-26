@@ -107,20 +107,56 @@ include 'php/logics.php';
       </div>
     </section>
     <!-- END section -->
+    <?php
+      
+if (isset($_GET['room_id'])) {
+  # code...
 
+  $room_id = $_GET['room_id'];
+  $sqlb = "SELECT * FROM `rooms` WHERE room_id='$room_id'";
+
+  $resb = mysqli_query($con, $sqlb);
+  $rowb = mysqli_fetch_assoc($resb);
+
+  $room_type = $rowb['room_type'];
+  $room_type2 = $rowb['room_type'];
+  $room_type3 = $rowb['room_type'];
+  $room_image2 = $rowb['room_image'];
+  $size2 = $rowb['size'];
+  $pp2 = $rowb['pp'];
+  $room_price2 = $rowb['room_price'];
+  $desc2 = $rowb['des'];
+
+}else {
+  $room_type2 = "choose room type";
+  $room_image2 = $rowr['room_image'];
+
+  $room_no2 = $rowr['room_no'];
+  $room_type3 = $rowr['room_type'];
+
+  $size2 = $rowr['size'];
+  $pp2 = $rowr['pp'];
+
+  $desc2 = $rowr['des'];
+  $room_price2 = $rowr['room_price'];
+
+
+}
+
+    ?>
     <section class="site-section">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2 class="mb-5">Reservation Form</h2>
+            <h2 class="mb-5" id="Reservation">Reservation Form</h2>
                 <form action="php/booknow.php" method="post">
                   <div class="row">
                       <div class="col-sm-6 form-group">
                           
                           <label for="">Arrival Date</label>
                           <div style="position: relative;">
-                            <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span>
-                            <input type='text' class="form-control" name="a_date" id='arrival_date' />
+                            <!-- <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span> -->
+                            <input type='date' class="form-control" name="a_date" id='arrival_date' />
                           </div>
                       </div>
 
@@ -128,8 +164,8 @@ include 'php/logics.php';
                           
                           <label for="">Departure Date</label>
                           <div style="position: relative;">
-                            <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span>
-                            <input type='text' class="form-control" name="d_date" id='departure_date' />
+                            <!-- <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span> -->
+                            <input type='date' class="form-control" name="d_date" id='departure_date' />
                           </div>
                       </div>
                       
@@ -139,17 +175,12 @@ include 'php/logics.php';
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="room">Number of Rooms</label>
-                      <select name="n_room" id="room" class="form-control">
-                        <option value="1 Room">1 Room</option>
-                        <option value="2 Rooms">2 Rooms</option>
-                        <option value="3 Rooms">3 Rooms</option>
-                        <option value="4 Rooms">4 Rooms</option>
-                        <option value="5 Rooms">5 Rooms</option>
-                      </select>
+                      <input type="number" id="room" name="n_room" class="form-control ">
+                       
                     </div>
 
                     <div class="col-md-6 form-group">
-                      <label for="room">Guests</label>
+                      <label for="room">Guests per room</label>
                       <input type="number" id="room" name="guests" class="form-control ">
                     </div>
                   </div>
@@ -157,11 +188,11 @@ include 'php/logics.php';
                     <div class="col-md-12 form-group">
                       <label for="room-type">Room type</label>
                       <select name="t_room" id="room-type" class="form-control">
-                        <option value="Room 1">Room 1</option>
-                        <option value="Room 2">Room 2</option>
-                        <option value="Room 3">Room 3</option>
-                        <option value="Room 4">Room 4</option>
-                        <option value="Room 5">Room 5</option>
+                      <option value="<?php echo $room_type2;?>"><?php echo $room_type2;?></option>
+                        <option value="Single room">Single room</option>
+                        <option value="twin room">twin room</option>
+                        <option value="standard room">standard room</option>
+                        <option value="king room">king room</option>
                       </select>
                     </div>
                   </div>
@@ -202,7 +233,7 @@ include 'php/logics.php';
                 <h3 class="mb-5">Featured Room</h3>
                 <div class="media d-block room mb-0">
               <figure>
-                <img src="images/img_1.jpg" alt="Generic placeholder image" class="img-fluid">
+                <img src="images/rooms/<?php echo $room_image2;?>" alt="Generic placeholder image" class="img-fluid">
                 <div class="overlap-text">
                   <span>
                     Featured Room 
@@ -213,13 +244,13 @@ include 'php/logics.php';
                 </div>
               </figure>
               <div class="media-body">
-                <h3 class="mt-0"><a href="#">Presidential Room</a></h3>
+                <h3 class="mt-0"><a href="#" style="text-transform: captalize;"><?php echo strtoupper($room_type3);?></a></h3>
                 <ul class="room-specs">
-                  <li><span class="ion-ios-people-outline"></span> 2 Guests</li>
-                  <li><span class="ion-ios-crop"></span> 22 ft <sup>2</sup></li>
+                  <li><span class="ion-ios-people-outline"></span> <?php echo $pp2;?> Guests</li>
+                  <li><span class="ion-ios-crop"></span> <?php echo $size2;?> ft <sup>2</sup></li>
                 </ul>
-                <p>Nulla vel metus scelerisque ante sollicitudin. Fusce condimentum nunc ac nisi vulputate fringilla. </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $20</a></p>
+                <p><?php echo $desc2;?></p>
+                <p><a href="#" class="btn btn-primary btn-sm">Book Now From $<?php echo $room_price2;?></a></p>
               </div>
             </div>
               </div>
